@@ -297,42 +297,113 @@ public class Workshop {
     public int contarCaracteres(String cadena) {
         // TODO: Implementar el método para contar el número de caracteres en una cadena.
         // Ejemplo: Si cadena = "Hello", el resultado debería ser 5.
-        return 0;
+        return cadena.length();
     }
+
 
     // Método que invierte una cadena
     public String invertirCadena(String cadena) {
         // TODO: Implementar el método para invertir una cadena.
         // Ejemplo: Si cadena = "Hello", el resultado debería ser "olleH".
-        return "";
+        String resultado = "";
+
+        // Recorro la cadena desde el final hacia el inicio
+        for (int i = cadena.length() - 1; i >= 0; i--) {
+            // Voy agregando cada letra al resultado
+            resultado = resultado + cadena.charAt(i);
+        }
+
+        return resultado;
     }
 
     // Método que verifica si una cadena es un palíndromo
     public boolean esPalindromo(String cadena) {
         // TODO: Implementar el método para verificar si una cadena es un palíndromo.
         // Ejemplo: Si cadena = "madam", el resultado debería ser true.
-        return false;
+        cadena = cadena.replace(" ", "").toLowerCase();
+
+        // Invertimos la cadena
+        String invertida = "";
+        for (int i = cadena.length() - 1; i >= 0; i--) {
+            invertida = invertida + cadena.charAt(i);
+        }
+
+        // Comparamos si son iguales
+        return cadena.equals(invertida);
     }
 
     // Método que cuenta el número de palabras en una cadena
     public int contarPalabras(String cadena) {
         // TODO: Implementar el método para contar el número de palabras en una cadena.
         // Ejemplo: Si cadena = "Este es un test", el resultado debería ser 4.
-        return 0;
+        if (cadena.isEmpty()) {
+            return 0;
+        }
+
+        // Quitamos espacios al inicio y final
+        cadena = cadena.trim();
+
+        // Si después de trim queda vacío, retornamos 0
+        if (cadena.isEmpty()) {
+            return 0;
+        }
+
+        // Contamos cuántas palabras hay
+        int contador = 1; // Empezamos con 1 porque la primera palabra no tiene espacio antes
+
+        for (int i = 0; i < cadena.length(); i++) {
+            // Si encontramos un espacio, y el siguiente carácter NO es espacio
+            if (cadena.charAt(i) == ' ') {
+                // Verificamos que no sea el último carácter y que el siguiente no sea espacio
+                if (i + 1 < cadena.length() && cadena.charAt(i + 1) != ' ') {
+                    contador++;
+                }
+            }
+        }
+
+        return contador;
     }
+
 
     // Método que convierte una cadena a mayúsculas
     public String convertirAMayusculas(String cadena) {
         // TODO: Implementar el método para convertir una cadena a mayúsculas.
         // Ejemplo: Si cadena = "hello", el resultado debería ser "HELLO".
-        return "";
-    }
+        String resultado = "";
 
+        for (int i = 0; i < cadena.length(); i++) {
+            char letra = cadena.charAt(i);
+
+            // Si la letra está entre 'a' y 'z', la convertimos a mayúscula
+            if (letra >= 'a' && letra <= 'z') {
+                // Restamos 32 para convertir a mayúscula
+                letra = (char)(letra - 32);
+            }
+
+            resultado = resultado + letra;
+        }
+
+        return resultado;
+    }
     // Método que convierte una cadena a minúsculas
     public String convertirAMinusculas(String cadena) {
         // TODO: Implementar el método para convertir una cadena a minúsculas.
         // Ejemplo: Si cadena = "HELLO", el resultado debería ser "hello".
-        return "";
+        String resultado = "";
+
+        for (int i = 0; i < cadena.length(); i++) {
+            char letra = cadena.charAt(i);
+
+            // Si la letra está entre 'A' y 'Z', la convertimos a minúscula
+            if (letra >= 'A' && letra <= 'Z') {
+                // Sumamos 32 para convertir a minúscula
+                letra = (char)(letra + 32);
+            }
+
+            resultado = resultado + letra;
+        }
+
+        return resultado;
     }
 
     // Método que reemplaza una subcadena en una cadena por otra subcadena
