@@ -200,6 +200,7 @@ public class WorkshopTest {
         assertArrayEquals(new int[]{1, 2, 3}, tester.combinarArreglos(new int[]{1, 2, 3}, new int[]{}));
         // Test 3: Combinar dos arreglos vacíos
         assertArrayEquals(new int[]{}, tester.combinarArreglos(new int[]{}, new int[]{}));
+
     }
 
     // Test para el método rotarArreglo
